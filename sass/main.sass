@@ -1,2 +1,109 @@
+$x-lightgrey: #fafbfb
+$lightgrey: #F4F6F7
+$blueblack: #435061
+$copy-black: #323B40
+$c-rule: #DEE4E7
+
+
 *
 	box-sizing: border-box
+
+body
+	font-size: 17px
+	margin: 0
+	background: $blueblack
+
+.phone
+	max-width: 400px
+	width: 40vw
+	max-height: 700px
+	height: 70vw
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translateX(-50%) translateY(-50%)
+	border: 1px solid grey
+	border-radius: 2vw
+	padding: 6vw 2vw 10vw 2vw
+	background: white
+
+	&::before,
+	&::after
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(-50%)
+		border: 1px solid $c-rule
+
+	&::before
+		top: 3.5vw
+		height: 0.5vw
+		width: 7vw
+		border-radius: 0.25vw
+
+	&::after
+		bottom: 2vw
+		width: 5vw
+		height: 5vw
+		border-radius: 100%
+	
+.phone__screen
+	position: absolute
+	top: 6vw
+	left: 2vw
+	width: calc(100% - 4vw)
+	height: calc(100% - 15vw)
+	overflow: hidden
+	border: 1px solid #eee
+
+.page
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background: $x-lightgrey
+
+	&--homepage
+		z-index: 100
+		background: rgb(218,218,218)
+		transform: translateX(-120%)
+		transition: 0.3s
+
+		&::after
+			content: ''
+			position: absolute
+			right: -20px
+			top: 0
+			width: 20px
+			height: 100%
+			background: linear-gradient(90deg, rgba(0,0,0,0.08), rgba(0,0,0,0))
+
+	&.active
+		transform: translateX(0)
+
+.action
+	display: block
+	margin: 1em auto
+	padding: 1em 3em
+	border: none
+	border-radius: 3px
+	background: transparent
+	font-size: 17px
+
+	&--primary
+		background: white
+
+	&--secondary
+		text-decoration: underline
+
+.homepage__breathe
+	display: block
+	margin: 7em auto 4em auto
+
+.homepage__actions
+	position: absolute
+	width: 100%
+	height: 170px
+	left: 0
+	bottom: 0

@@ -1,5 +1,13 @@
 extends ./layout/_default
 
 block content
-    .mobile-container
-        p hi
+	.page.page--homepage.js-homepage.active
+		img(src='/img/animation.gif').homepage__breathe
+		.homepage__actions
+			button.action.action--primary.js-toggle-homepage Help me!
+			button.action.action--secondary.js-toggle-homepage Log my day
+	.page.active
+		button.action.action--secondary.js-toggle-homepage Go back
+		
+		ul.messages
+			li.message Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
