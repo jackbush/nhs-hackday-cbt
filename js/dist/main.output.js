@@ -1,17 +1,66 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/jackbush/Repos/breathe-app/js/src/main.js":[function(require,module,exports){
-var $ = window.jq = require('jquery');
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/jackbush/Repos/nhs-hackday/js/src/_chatBot.js":[function(require,module,exports){
+var $ = require('jquery');
+
+var elTriggerSpotlight = $('.js-trigger-spotlight');
+var elTriggerLog = $('.js-trigger-log');
+
+function spotlightChat () {
+	console.log('spotlight');
+}
+
+function logChat () {
+	console.log('log');
+}
+
+elTriggerSpotlight.on('click', spotlightChat);
+elTriggerLog.on('click', logChat);
+
+},{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js":[function(require,module,exports){
+var $ = require('jquery');
 
 var elHomepage = $('.js-homepage');
 var elToggleHomepage = $('.js-toggle-homepage');
 
 function toggleHomepage () {
-	console.log('hi!');
 	elHomepage.toggleClass('active');
 }
 
 elToggleHomepage.on('click', toggleHomepage);
 
-},{"jquery":"/Users/jackbush/Repos/breathe-app/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/breathe-app/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+},{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js":[function(require,module,exports){
+var $ = require('jquery');
+var elUserInput = $('.js-user-input');
+var elMessageContainer = $('.js-message-container');
+
+function createUserMessage (copy) {
+	elUserInput.val('');
+
+	var message = '<li class="message message--user">' + copy + '<li>';
+
+	elMessageContainer.append(message);
+
+	// Fuck knows how, but the jquery object is
+	// being treated as a zepto object here -- [0]
+	// selector is to get the actual element
+	var messageContainer = elMessageContainer[0];
+	messageContainer.scrollTop = messageContainer.scrollHeight;
+}
+
+elUserInput.keypress(function (event) {
+	if (event.which === 13) {
+		createUserMessage(event.currentTarget.value);
+		return false;
+	}
+});
+
+},{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/main.js":[function(require,module,exports){
+window.jq = require('jquery');
+
+require('./_toggleHomepage.js');
+require('./_userMessages.js');
+require('./_chatBot');
+
+},{"./_chatBot":"/Users/jackbush/Repos/nhs-hackday/js/src/_chatBot.js","./_toggleHomepage.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js","./_userMessages.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js","jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.3
  * http://jquery.com/
@@ -9855,7 +9904,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}]},{},["/Users/jackbush/Repos/breathe-app/js/src/main.js"])
+},{}]},{},["/Users/jackbush/Repos/nhs-hackday/js/src/main.js"])
 
 
 //# sourceMappingURL=main.output.js.map

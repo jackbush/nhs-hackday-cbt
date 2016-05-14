@@ -1,36 +1,27 @@
-$x-lightgrey: #fafbfb
-$lightgrey: #F4F6F7
+@import './_normalize'
+@import './_fonts'
+
+$grey--fill: #fafbfb
+$grey--line: #DEE4E7
+$black--text: #323B40
 $blueblack: #435061
-$copy-black: #323B40
-$c-rule: #DEE4E7
 
-
-*
+*,
+*::before, *::after
 	box-sizing: border-box
 
 body
 	font-size: 17px
-	margin: 0
+	font-family: 'Europa', 'Helvetica', 'Arial', sans-serif
+	font-weight: 300
+	color: $black--text
 	background: $blueblack
 
-
+@import './typography'
 
 @import './_template-phone'
+
 @import './_template-pages'
-
-.action
-	display: block
-	margin: 1em auto
-	padding: 1em 3em
-	border: none
-	border-radius: 3px
-	background: transparent
-	font-size: 17px
-
-	&--primary
-		background: white
-
-	&--secondary
-		text-decoration: underline
-
 @import './_homepage'
+
+@import './messages'

@@ -1,0 +1,24 @@
+.messages
+	list-style: none
+	padding: 1em
+	margin: 0
+	height: 25vw
+	overflow: scroll
+
+	// Scroll properties
+	-webkit-overflow-scrolling: touch
+	&::-webkit-scrollbar
+	    display: none
+
+
+.message
+	padding: 0.5em
+	border-radius: 3px
+	border: 1px solid $grey--line
+	width: 80%
+	margin-bottom: 0.75em
+	vertical-align: bottom
+
+	// Right-align user-sent messages
+	&--user
+		margin-left: 20%

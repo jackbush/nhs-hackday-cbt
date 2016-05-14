@@ -4,7 +4,7 @@
 	left: 0
 	width: 100%
 	height: 100%
-	background: $x-lightgrey
+	background: $grey--fill
 
 	&--homepage
 		z-index: 100
@@ -23,3 +23,37 @@
 
 	&.active
 		transform: translateX(0)
+
+.page__topbar
+	padding: 0 1em
+	// border-bottom: 1px solid $grey--line
+	position: relative
+
+	&::after
+		content: ''
+		position: absolute
+		bottom: -12px
+		left: 0
+		width: 100%
+		height: 12px
+		background: linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0))
+
+.page__input
+	background: $grey--line
+	height: 4vw
+	padding: 0.25em
+	input
+		border-radius: 3px
+		border: none
+		width: 100%
+		padding: 0.3em
+
+.page__keyboard
+	position: relative
+	width: 100%
+	height: 19.7vw
+	max-height: 197px
+	background-image: url(/img/keyboard.png)
+	background-position: center
+	background-repeat: no-repeat
+	background-size: 100%

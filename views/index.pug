@@ -1,13 +1,19 @@
 extends ./layout/_default
 
 block content
-	.page.page--homepage.js-homepage.active
+	.page.page--homepage.js-homepage
 		img(src='/img/animation.gif').homepage__breathe
 		.homepage__actions
-			button.action.action--primary.js-toggle-homepage Help me!
-			button.action.action--secondary.js-toggle-homepage Log my day
+			button.action.action--primary.js-toggle-homepage.js-trigger-spotlight Let's Spotlight
+			button.action.action--secondary.js-toggle-homepage.js-trigger-log Log my day
 	.page.active
-		button.action.action--secondary.js-toggle-homepage Go back
-		
-		ul.messages
+		.page__topbar
+			button.link.js-toggle-homepage Go back
+
+		ul.messages.js-message-container
 			li.message Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+			li.message.message--user non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		.page__input
+			input(type='text' autofocus).js-user-input
+		.page__keyboard
