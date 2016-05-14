@@ -1,21 +1,207 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/jackbush/Repos/nhs-hackday/js/src/_chatBot.js":[function(require,module,exports){
-var $ = require('jquery');
+var jquery = require('jquery');
 
-var elTriggerSpotlight = $('.js-trigger-spotlight');
-var elTriggerLog = $('.js-trigger-log');
+var triggerSpotlight = jquery('.js-trigger-spotlight');
+var triggerReflection = jquery('.js-trigger-reflection');
 
-function spotlightChat () {
-	console.log('spotlight');
+var messageContainer = jquery('.js-message-container');
+var elMessageContainer = messageContainer[0];
+
+var elUserInput = jquery('.js-user-input');
+
+var content = require('./_chatContent.js');
+
+// function checkNumberOfMessages () {
+// 	return jquery('.message').length;
+// }
+// var numberOfMessages = checkNumberOfMessages();
+
+function scrollToBottom () {
+	elMessageContainer.scrollTop = elMessageContainer.scrollHeight;
 }
 
-function logChat () {
-	console.log('log');
+function randomDelay () {
+	return Math.random() * 1500 + 2000;
 }
 
-elTriggerSpotlight.on('click', spotlightChat);
-elTriggerLog.on('click', logChat);
+function sendMessage (copy) {
+	var message = '<li class="message">' + copy + '<li>';
+	messageContainer.append(message);
+	scrollToBottom();
+}
 
-},{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js":[function(require,module,exports){
+var activePath;
+var activeMessages;
+var currentMessage;
+
+function runChat () {
+	currentMessage += 1;
+	if (currentMessage >= activeMessages.length) {
+		return;
+	}
+	sendMessage(activeMessages[currentMessage]);
+	// If message isn't a question, go again!
+	if (activeMessages[currentMessage].slice(-1) !== '?') {
+		setTimeout(runChat, randomDelay());
+	}
+}
+
+function initChat (path) {
+	currentMessage = -1;
+	activePath = path;
+	activeMessages = content[activePath].chat;
+	runChat();
+}
+
+// var keys = Object.keys(content);
+// keys = ["registration", "what", "why", "spotlight", "reflection", "help"]
+
+triggerSpotlight.on('click', function (ev) {
+	initChat('spotlight');
+});
+
+triggerReflection.on('click', function (ev) {
+	initChat('reflection');
+});
+
+elUserInput.keypress(function (event) {
+	if (event.which === 13) {
+		setTimeout(runChat, randomDelay());
+	}
+});
+
+initChat('registration');
+
+},{"./_chatContent.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_chatContent.js","jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_chatContent.js":[function(require,module,exports){
+module.exports = {
+	registration: {
+		title: 'registration',
+		chat: [
+			'Hello!',
+			'Whats your name?',
+			'Hi Chris! Would you mind telling me how old you are?',
+			'Thanks :)',
+			'Let me tell you more about this app!',
+			'This app is designed to help people with functional neurological disorders (FND).',
+			'One of the main treatments is Cognitive Behavioural Therapy (CBT)',
+			'It is often hard to access and can involve lengthy waiting lists.',
+			'With this app you can start on your journey through treatment before you see your specialist.',
+			'This app helps in two ways:',
+			'Spotlight sessions are for when you get symptoms and want to work through them.',
+			'Reflection sessions help you keep a diary of your symptoms.',
+			'It\'s common to experience more than one symptom. It is more useful, however, to focus on one at a time.',
+			'Which symptom affects you most?',
+				// Weakness
+				// Pain
+				// Tingling
+				// Dizzy
+				// Anxious
+				// Headache
+				// Fits
+				// Forgetful
+				// Tired
+				// Sad
+				// Twitches and jerks
+				// Word finding difficulty
+				// Spasm
+				// Disconnected
+				// Trembling
+				// Swallowing difficulty
+				// Limb stiffness
+			'What are your long-term goals?',
+			// {
+			// 	type: 'hint',
+			// 	chat: 'It may be something such as being able to walk the dog, or drive a car.'
+			// },
+			'Do you want to know more about how CBT works?',
+			'Cognitive Behavioural Therapy works by doing a few things!',
+			'It shows how your thoughts and symptoms are linked,',
+			'It builds an understanding how your situation affect emotions, thoughts, behaviours and physical symptoms.',
+			'It teaches ways to re-programme unhelpful responses.',
+			'Start a new session from the homepage :)',
+			'Bye for now!'
+		]
+	},
+	what: {
+		title: 'What is FND?',
+		chat: [
+			'Functional neurological symptoms is an umbrella term use for a variety of symptoms which relate to neurological features which are not due to physical damage to the nervous system.',
+			'These symptoms arise due to a problem with the function, rather than structure of the nervous system.',
+			'It is quite common for the diagnosis of functional neurological disorders to take a long time, and patients often find that they have seen multiple specialist before they receive the diagnosis. This process can sometimes be frustrating.',
+			'It’s useful to think of the problem as being due to messages which are not being communicated effectively between the brain and body.',
+			'It\'s like a computer having a software problem rather than a hardware problem.'
+		]
+	},
+	why: {
+		title: 'Why do I have FND?',
+		chat: [
+			'Often we do not know 100% why the symptoms started and our models of why people get functional symptoms are incomplete.',
+			'There are many potential reasons why someone might become vulnerable to functional symptoms.  There might be things that happened before the symptoms started (Predisposing Factors); things that happened around the time that the symptoms started (Precipitating Factors) and things that happened after the symptoms started (Perpetuating or Maintaining Factors).',
+			'What is the treatment?',
+			'The treatment of FND depends largely on the specific symptoms, but is usually a combination of psychological therapy, physiotherapy, occupational therapy, and psychiatric input.',
+			'CBT approaches have been used successfully as part of the psychological therapy process, and this is the main aspect we focus on in this app.'
+		]
+	},
+	/*
+	'Focus/Relaxation techniques': [
+	// 1)Mindful Breathing
+	// Breathe in while the shape is unfolding, breathe out while the shape refolds.
+	// Repeat until you feel able to continue.
+
+	// 2)Finger tap:
+	// On both hands tap your index finger on your thumb, moving on to tap each finger and then back again. Repeat this until you feel able to continue.
+
+	// Insert GIF
+
+	// 3) Mindfulness:
+	// Whatever you do, be in this moment. Focus your attention, notice what you see around you. Listen to the sounds around. Notice your senses, smell, touch, hearing. Reach out and touch what is within reach - the chair, the floor. Notice those sensations of breathing in your body. Take a deep breath. Simply notice as thoughts and sensations come to mind, then gently re-focus. Be patient and kind with yourself. Describe your experiences and what you notice, rather than judging. It is as it is. It will pass.
+
+	// 4) Distraction:
+	// Insert audio
+	],
+	*/
+	spotlight: {
+		title: 'Spotlight',
+		chat: [
+			'What did you experience?',
+			'What were your physical symptoms?',
+			/* Symptoms: Shoulder aches, arm feeling heavy and weak, dizziness, twitching. */
+			'What were you thinking about at the time?',
+			/* Thoughts: I am a failure, everyone is looking at me, I can’t cope. */
+			'How did that make you feel? What emotions did you experience?',
+			// Emotions: Angry, sad, embarrassed, lonely.
+			'How did this affect your behaviour?',
+			// Behaviour: Leaving room to escape, avoid eye contact, having a drink, avoid leaving house
+			'Well done for completing your spotlight!',
+			'See you soon :)'
+		]
+	},
+	reflection: {
+		title: 'Spotlight reflection',
+		chat: [
+			'Did anything you that you experienced or did make things worse?',
+			'How could you change regarding your thoughts/emotions/physical experience/behaviour to make this better next time?',
+			'Well done completing your spotlight reflection!',
+			'Would you like to do more relaxation/focus?',
+			'How was today?',
+			'On a scale from one to ten...',
+			'How are you today?',
+			'How much do you notice your symptom now?',
+			'How much have your symptoms impacted on your day?',
+			'Would you like to add any extra thoughts?',
+			'Catch you next time!'
+		]
+	},
+	help: {
+		title: 'Help and support',
+		chat: [
+			'Further information about FND can be sought from <a href="http://fndhope.org/">FND Hope Charity</a>',
+			'If you are in crisis please consider contacting the <a href="http://samaritans.org">Samaritans</a> on 115123'
+		]
+	}
+};
+
+},{}],"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js":[function(require,module,exports){
 var $ = require('jquery');
 
 var elHomepage = $('.js-homepage');
@@ -28,9 +214,9 @@ function toggleHomepage () {
 elToggleHomepage.on('click', toggleHomepage);
 
 },{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js":[function(require,module,exports){
-var $ = require('jquery');
-var elUserInput = $('.js-user-input');
-var elMessageContainer = $('.js-message-container');
+var jquery = require('jquery');
+var elUserInput = jquery('.js-user-input');
+var elMessageContainer = jquery('.js-message-container');
 
 function createUserMessage (copy) {
 	elUserInput.val('');
@@ -39,9 +225,7 @@ function createUserMessage (copy) {
 
 	elMessageContainer.append(message);
 
-	// Fuck knows how, but the jquery object is
-	// being treated as a zepto object here -- [0]
-	// selector is to get the actual element
+	// Now we get the actual element and scroll down
 	var messageContainer = elMessageContainer[0];
 	messageContainer.scrollTop = messageContainer.scrollHeight;
 }

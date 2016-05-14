@@ -1,6 +1,6 @@
-var $ = require('jquery');
-var elUserInput = $('.js-user-input');
-var elMessageContainer = $('.js-message-container');
+var jquery = require('jquery');
+var elUserInput = jquery('.js-user-input');
+var elMessageContainer = jquery('.js-message-container');
 
 function createUserMessage (copy) {
 	elUserInput.val('');
@@ -9,9 +9,7 @@ function createUserMessage (copy) {
 
 	elMessageContainer.append(message);
 
-	// Fuck knows how, but the jquery object is
-	// being treated as a zepto object here -- [0]
-	// selector is to get the actual element
+	// Now we get the actual element and scroll down
 	var messageContainer = elMessageContainer[0];
 	messageContainer.scrollTop = messageContainer.scrollHeight;
 }
