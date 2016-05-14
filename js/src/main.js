@@ -1,0 +1,2 @@
+window.jq = require('jquery');
+
