@@ -1,6 +1,7 @@
 var jquery = require('jquery');
 
 var triggerSpotlight = jquery('.js-trigger-spotlight');
+var triggerJournal = jquery('.js-trigger-journal');
 
 var messageContainer = jquery('.js-message-container');
 var elMessageContainer = messageContainer[0];
@@ -60,6 +61,10 @@ function initChat (path) {
 
 triggerSpotlight.on('click', function (ev) {
 	initChat('spotlight');
+});
+
+triggerJournal.on('click', function (ev) {
+	initChat('journal');
 });
 
 elUserInput.keypress(function (event) {
