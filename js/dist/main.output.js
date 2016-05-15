@@ -218,6 +218,17 @@ function toggleHomepage () {
 
 elToggleHomepage.on('click', toggleHomepage);
 
+},{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepageImage.js":[function(require,module,exports){
+var $ = require('jquery');
+
+var elHomepageImage = $('.js-alt-image');
+
+function toggleImage () {
+	elHomepageImage.toggleClass('alt');
+}
+
+elHomepageImage.on('click', toggleImage);
+
 },{"jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js":[function(require,module,exports){
 var jquery = require('jquery');
 var elUserInput = jquery('.js-user-input');
@@ -246,10 +257,11 @@ elUserInput.keypress(function (event) {
 window.jq = require('jquery');
 
 require('./_toggleHomepage.js');
+require('./_toggleHomepageImage.js');
 require('./_userMessages.js');
 require('./_chatBot');
 
-},{"./_chatBot":"/Users/jackbush/Repos/nhs-hackday/js/src/_chatBot.js","./_toggleHomepage.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js","./_userMessages.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js","jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+},{"./_chatBot":"/Users/jackbush/Repos/nhs-hackday/js/src/_chatBot.js","./_toggleHomepage.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js","./_toggleHomepageImage.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepageImage.js","./_userMessages.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_userMessages.js","jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.3
  * http://jquery.com/

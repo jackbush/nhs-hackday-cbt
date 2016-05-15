@@ -1,8 +1,20 @@
-.homepage__breathe
+.homepage__breathe,
+.homepage__animation
 	position: absolute
+	width: 265px
+	height: 225px
 	bottom: 250px
 	left: 50%
 	transform: translateX(-50%)
+
+	background-position: center
+	background-repeat: no-repeat
+	background-size: 100%
+	background-image: url(/img/breathe.gif)
+
+	&.alt
+		background-image: url(/img/tap.gif)
+		background-size: 60%
 
 .homepage__actions
 	position: absolute
