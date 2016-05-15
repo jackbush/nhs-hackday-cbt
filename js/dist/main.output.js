@@ -4,12 +4,15 @@ var jquery = require('jquery');
 var triggerSpotlight = jquery('.js-trigger-spotlight');
 var triggerJournal = jquery('.js-trigger-journal');
 
+var stopChat = jquery('.js-stop-chat');
+
 var messageContainer = jquery('.js-message-container');
 var elMessageContainer = messageContainer[0];
 
 var elUserInput = jquery('.js-user-input');
 
 var content = require('./_chatContent.js');
+var interrupted = false;
 
 // function checkNumberOfMessages () {
 // 	return jquery('.message').length;
@@ -45,6 +48,10 @@ function runChat () {
 		return;
 	}
 
+	if (interrupted === true) {
+		return;
+	}
+
 	sendMessage(activeMessages[currentMessage]);
 
 	// If message isn't a question, go again!
@@ -54,6 +61,7 @@ function runChat () {
 }
 
 function initChat (path) {
+	interrupted = false;
 	currentMessage = -1;
 	activePath = path;
 	activeMessages = content[activePath].chat;
@@ -66,6 +74,10 @@ triggerSpotlight.on('click', function (ev) {
 
 triggerJournal.on('click', function (ev) {
 	initChat('journal');
+});
+
+stopChat.on('click', function (ev) {
+	interrupted = true;
 });
 
 elUserInput.keypress(function (event) {
@@ -207,13 +219,21 @@ module.exports = {
 };
 
 },{}],"/Users/jackbush/Repos/nhs-hackday/js/src/_toggleHomepage.js":[function(require,module,exports){
-var $ = require('jquery');
+var jquery = require('jquery');
 
-var elHomepage = $('.js-homepage');
-var elToggleHomepage = $('.js-toggle-homepage');
+var elHomepage = jquery('.js-homepage');
+var elToggleHomepage = jquery('.js-toggle-homepage');
+
+function focusInput () {
+	jquery('.js-user-input').focus();
+}
 
 function toggleHomepage () {
 	elHomepage.toggleClass('active');
+
+	if (!elHomepage.hasClass('active')) {
+		focusInput();
+	}
 }
 
 elToggleHomepage.on('click', toggleHomepage);
