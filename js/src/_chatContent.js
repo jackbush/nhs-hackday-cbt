@@ -4,6 +4,7 @@ module.exports = {
 		chat: [
 			'Hello!',
 			'Whats your name?',
+			// It's hard-coded for now
 			'Hi Chris! Would you mind telling me how old you are?',
 			'Thanks :)',
 			'Let me tell you more about this app!',
@@ -16,6 +17,7 @@ module.exports = {
 			'Reflection sessions help you keep a diary of your symptoms.',
 			'It\'s common to experience more than one symptom. It is more useful, however, to focus on one at a time.',
 			'Which symptom affects you most?',
+				// Not sure how beneficial this is when we're taking plain text
 				// Weakness
 				// Pain
 				// Tingling
@@ -39,6 +41,7 @@ module.exports = {
 			// 	chat: 'It may be something such as being able to walk the dog, or drive a car.'
 			// },
 			'Do you want to know more about how CBT works?',
+			// Yep!
 			'Cognitive Behavioural Therapy works by doing a few things!',
 			'It shows how your thoughts and symptoms are linked,',
 			'It builds an understanding how your situation affect emotions, thoughts, behaviours and physical symptoms.',
@@ -47,6 +50,84 @@ module.exports = {
 			'Bye for now!'
 		]
 	},
+	spotlight: {
+		title: 'Spotlight',
+		chat: [
+			'Hi there!',
+			'What did you experience?',
+			'What were your physical symptoms?',
+			// {
+			// 	type: 'hint',
+			// 	chat: 'Things like shoulder aches, arm feeling heavy and weak, dizziness, twitching.''
+			// }
+			'What were you thinking about at the time?',
+			// {
+			// 	type: 'hint',
+			// 	chat: 'This could be things like I am a failure, everyone is looking at me, I can’t cope.'
+			// }
+			'How did that make you feel? What emotions did you experience?',
+			// {
+			// 	type: 'hint',
+			// 	chat: 'Maybe you felt angry, sad, embarrassed, or lonely?'
+			// }
+			'How did this affect your behaviour?',
+			// {
+			// 	type: 'hint',
+			// 	chat: 'Did you leave room to escape, avoid eye contact, having a drink, or avoid leaving the house?'
+			// }
+			'Well done for completing the first part of your spotlight!',
+			'Now we\'re going to do some reflection on your experience :)',
+			'Did anything you that you experienced or did make things worse?',
+			'How could you change regarding your thoughts/emotions/physical experience/behaviour to make this better next time?',
+			'Well done completing your spotlight reflection!',
+			'Would you like to do more relaxation/focus?',
+			'How was today?',
+			'On a scale from one to ten...',
+			'How are you today?',
+			'How much do you notice your symptom now?',
+			'How much have your symptoms impacted on your day?',
+			'Would you like to add any extra thoughts?',
+			'Catch you next time!'
+		]
+	},
+	/*
+
+	'Focus/Relaxation techniques': [
+	// 1)Mindful Breathing
+	// Breathe in while the shape is unfolding, breathe out while the shape refolds.
+	// Repeat until you feel able to continue.
+
+	// 2)Finger tap:
+	// On both hands tap your index finger on your thumb, moving on to tap each finger and then back again. Repeat this until you feel able to continue.
+
+	// Insert GIF
+
+	// 3) Mindfulness:
+	// Whatever you do, be in this moment. Focus your attention, notice what you see around you. Listen to the sounds around. Notice your senses, smell, touch, hearing. Reach out and touch what is within reach - the chair, the floor. Notice those sensations of breathing in your body. Take a deep breath. Simply notice as thoughts and sensations come to mind, then gently re-focus. Be patient and kind with yourself. Describe your experiences and what you notice, rather than judging. It is as it is. It will pass.
+
+	// 4) Distraction:
+	// Insert audio
+	],
+
+	*/
+	// This is now part of the spotlight!
+	reflection: {
+		title: 'Spotlight reflection',
+		chat: [
+			'Did anything you that you experienced or did make things worse?',
+			'How could you change regarding your thoughts/emotions/physical experience/behaviour to make this better next time?',
+			'Well done completing your spotlight reflection!',
+			'Would you like to do more relaxation/focus?',
+			'How was today?',
+			'On a scale from one to ten...',
+			'How are you today?',
+			'How much do you notice your symptom now?',
+			'How much have your symptoms impacted on your day?',
+			'Would you like to add any extra thoughts?',
+			'Catch you next time!'
+		]
+	},
+	// And these guys are now part of a static info page :)
 	what: {
 		title: 'What is FND?',
 		chat: [
@@ -65,56 +146,6 @@ module.exports = {
 			'What is the treatment?',
 			'The treatment of FND depends largely on the specific symptoms, but is usually a combination of psychological therapy, physiotherapy, occupational therapy, and psychiatric input.',
 			'CBT approaches have been used successfully as part of the psychological therapy process, and this is the main aspect we focus on in this app.'
-		]
-	},
-	/*
-	'Focus/Relaxation techniques': [
-	// 1)Mindful Breathing
-	// Breathe in while the shape is unfolding, breathe out while the shape refolds.
-	// Repeat until you feel able to continue.
-
-	// 2)Finger tap:
-	// On both hands tap your index finger on your thumb, moving on to tap each finger and then back again. Repeat this until you feel able to continue.
-
-	// Insert GIF
-
-	// 3) Mindfulness:
-	// Whatever you do, be in this moment. Focus your attention, notice what you see around you. Listen to the sounds around. Notice your senses, smell, touch, hearing. Reach out and touch what is within reach - the chair, the floor. Notice those sensations of breathing in your body. Take a deep breath. Simply notice as thoughts and sensations come to mind, then gently re-focus. Be patient and kind with yourself. Describe your experiences and what you notice, rather than judging. It is as it is. It will pass.
-
-	// 4) Distraction:
-	// Insert audio
-	],
-	*/
-	spotlight: {
-		title: 'Spotlight',
-		chat: [
-			'What did you experience?',
-			'What were your physical symptoms?',
-			/* Symptoms: Shoulder aches, arm feeling heavy and weak, dizziness, twitching. */
-			'What were you thinking about at the time?',
-			/* Thoughts: I am a failure, everyone is looking at me, I can’t cope. */
-			'How did that make you feel? What emotions did you experience?',
-			// Emotions: Angry, sad, embarrassed, lonely.
-			'How did this affect your behaviour?',
-			// Behaviour: Leaving room to escape, avoid eye contact, having a drink, avoid leaving house
-			'Well done for completing your spotlight!',
-			'See you soon :)'
-		]
-	},
-	reflection: {
-		title: 'Spotlight reflection',
-		chat: [
-			'Did anything you that you experienced or did make things worse?',
-			'How could you change regarding your thoughts/emotions/physical experience/behaviour to make this better next time?',
-			'Well done completing your spotlight reflection!',
-			'Would you like to do more relaxation/focus?',
-			'How was today?',
-			'On a scale from one to ten...',
-			'How are you today?',
-			'How much do you notice your symptom now?',
-			'How much have your symptoms impacted on your day?',
-			'Would you like to add any extra thoughts?',
-			'Catch you next time!'
 		]
 	},
 	help: {

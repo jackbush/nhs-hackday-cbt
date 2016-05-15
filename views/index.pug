@@ -1,18 +1,27 @@
-extends ./layout/_default
+doctype html
+html.no-js(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel='stylesheet', href='/css/main.css')
 
-block content
-	.page.page--homepage.js-homepage
-		img(src='/img/animation.gif').homepage__breathe
-		.homepage__actions
-			button.action.action--primary.js-toggle-homepage.js-trigger-spotlight Spotlight session
-			button.action.action--secondary.js-toggle-homepage.js-trigger-reflection Reflection session
-	.page.active
-		.page__topbar
-			button.link.js-toggle-homepage Go back
+	body
+		.phone: .phone__screen
+			.page.page--homepage.js-homepage
+				img(src='/img/animation.gif').homepage__breathe
+				.homepage__actions
+					button.action.action--primary.js-toggle-homepage.js-trigger-spotlight Spotlight session
+					a(href='/about/' target='_blank').action.action--secondary About this app
+			.page.active
+				.page__topbar
+					button.link.js-toggle-homepage Go back
 
-		ul.messages.js-message-container
-			//- This is populated by scripts :)
+				ul.messages.js-message-container
+					//- This is populated by scripts :)
 
-		.page__input
-			input(type='text' autofocus).js-user-input
-		.page__keyboard
+				.page__input
+					input(type='text' autofocus).js-user-input
+				.page__keyboard
+
+		script(src='/js/dist/main.output.js')

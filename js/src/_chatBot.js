@@ -1,7 +1,6 @@
 var jquery = require('jquery');
 
 var triggerSpotlight = jquery('.js-trigger-spotlight');
-var triggerReflection = jquery('.js-trigger-reflection');
 
 var messageContainer = jquery('.js-message-container');
 var elMessageContainer = messageContainer[0];
@@ -35,10 +34,17 @@ var currentMessage;
 
 function runChat () {
 	currentMessage += 1;
+
+	// If it's the end of the script, go to homepage
 	if (currentMessage >= activeMessages.length) {
+		setTimeout(function () {
+			jquery('.js-homepage').toggleClass('active');
+		}, 3000);
 		return;
 	}
+
 	sendMessage(activeMessages[currentMessage]);
+
 	// If message isn't a question, go again!
 	if (activeMessages[currentMessage].slice(-1) !== '?') {
 		setTimeout(runChat, randomDelay());
@@ -52,15 +58,8 @@ function initChat (path) {
 	runChat();
 }
 
-// var keys = Object.keys(content);
-// keys = ["registration", "what", "why", "spotlight", "reflection", "help"]
-
 triggerSpotlight.on('click', function (ev) {
 	initChat('spotlight');
-});
-
-triggerReflection.on('click', function (ev) {
-	initChat('reflection');
 });
 
 elUserInput.keypress(function (event) {
@@ -69,4 +68,5 @@ elUserInput.keypress(function (event) {
 	}
 });
 
+// Start registration chat on load
 initChat('registration');
