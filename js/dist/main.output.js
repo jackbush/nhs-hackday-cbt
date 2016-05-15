@@ -70,7 +70,9 @@ elUserInput.keypress(function (event) {
 });
 
 // Start registration chat on load
-initChat('registration');
+setTimeout(function () {
+	initChat('registration');
+}, 1500);
 
 },{"./_chatContent.js":"/Users/jackbush/Repos/nhs-hackday/js/src/_chatContent.js","jquery":"/Users/jackbush/Repos/nhs-hackday/node_modules/jquery/dist/jquery.js"}],"/Users/jackbush/Repos/nhs-hackday/js/src/_chatContent.js":[function(require,module,exports){
 module.exports = {
